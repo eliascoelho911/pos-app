@@ -9,7 +9,7 @@ interface CardReader {
 
 internal class FakeCardReader(
     private val card: Card,
-    val delay: Long = 500L,
+    val delay: Long = 2000L,
 ): CardReader {
     override suspend fun waitAndReadCard(): Card {
         delay(delay)

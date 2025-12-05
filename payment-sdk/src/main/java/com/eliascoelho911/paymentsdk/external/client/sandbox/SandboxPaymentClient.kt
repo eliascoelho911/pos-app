@@ -8,7 +8,7 @@ import com.eliascoelho911.paymentsdk.model.PaymentStatus
 import kotlinx.coroutines.delay
 
 internal class SandboxPaymentClient(
-    private val processingDelayMillis: Long = 200L,
+    private val processingDelayMillis: Long = 3000L,
     private val timestampProvider: () -> Long = System::currentTimeMillis
 ) : PaymentClient {
     override suspend fun processPayment(

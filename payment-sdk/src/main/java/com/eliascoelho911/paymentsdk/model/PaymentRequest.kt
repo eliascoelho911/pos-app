@@ -5,7 +5,8 @@ data class PaymentRequest(
     val currency: Currency = Currency.BRL,
     val method: PaymentMethod,
     val installments: Int = 1,
-    val description: String? = null
+    val description: String? = null,
+    var pin: String? = null,
 )
 
 enum class PaymentMethod {
