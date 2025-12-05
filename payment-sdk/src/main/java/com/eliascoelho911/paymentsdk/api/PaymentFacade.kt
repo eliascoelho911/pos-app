@@ -2,7 +2,7 @@ package com.eliascoelho911.paymentsdk.api
 
 import kotlinx.coroutines.flow.Flow
 
-interface PaymentClient {
+interface PaymentFacade {
     suspend fun startPayment(request: PaymentRequest): Flow<PaymentEvent>
 }
 
