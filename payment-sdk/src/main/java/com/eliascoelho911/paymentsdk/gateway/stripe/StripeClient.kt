@@ -1,6 +1,5 @@
 package com.eliascoelho911.paymentsdk.gateway.stripe
 
-import com.eliascoelho911.paymentsdk.BuildConfig
 import com.eliascoelho911.paymentsdk.api.PaymentMethod
 import com.eliascoelho911.paymentsdk.api.PaymentRequest
 import com.eliascoelho911.paymentsdk.domain.model.CardPayload
@@ -21,6 +20,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class StripeClient(
+    private val configuration: StripeConfiguration = StripeConfiguration.fromEnvironment(),
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
     private val httpClient = HttpClient(OkHttp) {
@@ -32,7 +32,7 @@ class StripeClient(
                 host = "api.stripe.com"
                 protocol = HTTPS
             }
-            header(HttpHeaders.Authorization, "Bearer ${BuildConfig.STRIPE_SECRET_KEY}")
+            header(HttpHeaders.Authorization, "Bearer ${configuration.secretKey}")
         }
     }
 
@@ -46,7 +46,7 @@ class StripeClient(
                 append("confirm", true.toString())
                 append("automatic_payment_methods[enabled]", true.toString())
                 append("automatic_payment_methods[allow_redirects]", "never")
-                append("customer", BuildConfig.STRIPE_DEFAULT_CUSTOMER_ID)
+                append("customer", configuration.defaultCustomerId)
             }
 
             fun ParametersBuilder.appendPaymentMethod(method: PaymentMethod) {
