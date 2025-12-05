@@ -4,6 +4,6 @@ import com.eliascoelho911.paymentsdk.api.PaymentRequest
 import com.eliascoelho911.paymentsdk.api.PaymentStatus
 import com.eliascoelho911.paymentsdk.domain.model.CardPayload
 
-internal interface PaymentGateway {
+interface PaymentGateway {
     suspend fun processPayment(request: PaymentRequest, payload: CardPayload): PaymentStatus
 }

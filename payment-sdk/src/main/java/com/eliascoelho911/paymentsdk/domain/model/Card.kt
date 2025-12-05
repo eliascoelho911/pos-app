@@ -5,7 +5,7 @@ data class CardDisplayInfo(
     val brand: String
 )
 
-internal data class CardPayload(
+data class CardPayload(
     val cardNumber: String,
     val cardHolderName: String,
     val expirationDate: String,

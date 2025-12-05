@@ -2,7 +2,7 @@ package com.eliascoelho911.paymentsdk.device
 
 import kotlinx.coroutines.delay
 
-internal class FakeDeviceInteractor(
+class FakeDeviceInteractor(
     private val card: DeviceCard,
     val delay: Long = 500L,
 ): DeviceInteractor {

@@ -7,7 +7,7 @@ import com.eliascoelho911.paymentsdk.gateway.PaymentGateway
 import com.eliascoelho911.paymentsdk.gateway.stripe.StripeClient
 import com.eliascoelho911.paymentsdk.gateway.stripe.mapper.getPaymentStatus
 
-internal class SandboxPaymentGateway(
+class SandboxPaymentGateway(
     private val client: StripeClient
 ) : PaymentGateway {
     override suspend fun processPayment(

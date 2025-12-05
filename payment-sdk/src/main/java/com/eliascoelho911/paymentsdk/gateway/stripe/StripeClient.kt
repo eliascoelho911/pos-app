@@ -10,6 +10,7 @@ import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.request.forms.submitForm
+import io.ktor.client.request.header
 import io.ktor.http.HttpHeaders
 import io.ktor.http.ParametersBuilder
 import io.ktor.http.URLProtocol.Companion.HTTPS
@@ -19,7 +20,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-internal class StripeClient(
+class StripeClient(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
     private val httpClient = HttpClient(OkHttp) {

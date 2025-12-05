@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-internal class PaymentClientImpl(
+class PaymentClientImpl(
     private val gateway: PaymentGateway,
     private val deviceInteractor: DeviceInteractor
 ) : PaymentClient {
@@ -23,5 +23,5 @@ internal class PaymentClientImpl(
         val paymentResult = gateway.processPayment(request, card.payload)
 
         emit(PaymentEvent.Finished(paymentResult))
-    }.flowOn(Dispatchers.Main)
+    }.flowOn(Dispatchers.Default)
 }
